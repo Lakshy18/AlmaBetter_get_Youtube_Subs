@@ -16,19 +16,35 @@ mongoose.set("strictQuery", false);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Listing server on port 3000
+// Port
 const port = process.env.PORT || 3000;
-const dbURL =
-  process.env.DATABASE_URI || "mongodb://localhost:27017/youtubesubs";
-mongoose
-  .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => {
-    console.log("Connected to Database");
-    app.listen(port, () => console.log(`App listening on port ${port}!`));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+
+// Database url
+const dbURL = process.env.DATABASE_URL || "mongodb://localhost/subscribers";
+
+// Connect to database
+
+mongoose.connect(dbURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", (err) => console.log(err));
+db.once("open", () => console.log("Database created..."));
+
+// Listing server on port 3000
+// mongoose
+//   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then((result) => {
+//     console.log("Connected to Database");
+//     app.listen(port, () => console.log(`App listening on port ${port}!`));
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// listening on port
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 // refreshing
 const refresh = async () => {
