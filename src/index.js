@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 const port = process.env.PORT || 3000;
 
 // Database url
-const dbURL = process.env.DATABASE_URL || "mongodb://localhost/subscribers";
+const dbURL =  "mongodb+srv://naveensingh7604:naveensingh7604@cluster0.wq1gytd.mongodb.net/?retryWrites=true&w=majority";
 
 // Connect to database
 
