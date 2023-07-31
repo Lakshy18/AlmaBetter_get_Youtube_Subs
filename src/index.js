@@ -4,12 +4,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 // module/file import
 const app = require("./app.js");
-const Subscriber = require("./src/models/subscriber");
-const data = require("./src/data");
+const Subscriber = require("./models/subscribers.js");
+const data = require("./data.js");
 
 //dotenv import
 const dotenv = require("dotenv").config();
-
 
 // Parse JSON bodies (as sent by API clients)
 mongoose.set("strictQuery", false);
@@ -18,8 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Listing server on port 3000
-const port =  3000;
-const dbURL = process.env.DATABASE_URI;
+const port = process.env.PORT || 3000;
+const dbURL =
+  process.env.DATABASE_URI || "mongodb://localhost:27017/youtubesubs";
 mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {

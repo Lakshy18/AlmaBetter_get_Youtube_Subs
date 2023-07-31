@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
-const Subscriber = require("./src/models/subscriber");
+const Subscriber = require("./models/subscribers");
 
 // routes
 app.get("/", (req, res) => {

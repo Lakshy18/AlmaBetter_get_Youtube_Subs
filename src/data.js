@@ -1,6 +1,16 @@
 const data = [
-  { name: "Khushboo Medi", subscribedChannel: "Discovery" },
-  { name: "Indresh Tiwari", subscribedChannel: "T Series" },
-  { name: "Ravi Patidar", subscribedChannel: "Lucent" },
-];
+  {
+    "name": "Jeread Krus",
+    "subscribedChannel": "CNET"
+  },
+  {
+    "name": "John Doe",
+    "subscribedChannel": "freeCodeCamp.org"
+  },
+  {
+    "name": "Lucifer",
+    "subscribedChannel": "Sentex"
+  }
+]
+
 module.exports = data;
