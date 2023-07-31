@@ -3,9 +3,9 @@ const express = require("express");
 //initializing mongoose
 const mongoose = require("mongoose");
 // module/file import
-const app = require("../app.js");
-const Subscriber = require("../models/subscribers.js");
-const data = require("../data.js");
+const app = require("./app.js");
+const Subscriber = require("./models/subscribers.js");
+const data = require("./data.js");
 
 //dotenv import
 const dotenv = require("dotenv").config();
