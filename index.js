@@ -1,7 +1,9 @@
 // initializing express
 const express = require("express");
+
 //initializing mongoose
 const mongoose = require("mongoose");
+
 // module/file import
 const app = require("./src/app.js");
 const Subscriber = require("./src/models/subscribers.js");
@@ -17,35 +19,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Port
-const port =  3000;
+const port = 3000 || process.env.PORT;
 
 // Database url
-const dbURL = "mongodb+srv://naveensingh7604:naveensingh7604@cluster0.wq1gytd.mongodb.net/?retryWrites=true&w=majority";
-
-// Connect to database
-
-// mongoose.connect(dbURL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// const db = mongoose.connection;
-// db.on("error", (err) => console.log(err));
-// db.once("open", () => console.log("Database created..."));
+const dbURL =
+  "mongodb+srv://LakshyRaj:LakshyRaj@cluster0.jpxmvcv.mongodb.net/?retryWrites=true&w=majority" ||
+  process.env.DATABASE_URL;
 
 // Listing server on port 3000
 mongoose
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log("Connected to Database");
-    // app.listen(port, () => console.log(`App listening on port ${port}!`));
-    app.listen(port,()=>console.log(`App listening on port ${port}!`))
+    // server listening
+    app.listen(port, () => console.log(`App listening on port ${port}!`));
   })
   .catch((err) => {
     console.log(err);
   });
-
-// listening on port
-// app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 // refreshing
 const refresh = async () => {
